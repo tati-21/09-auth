@@ -6,7 +6,7 @@ import { checkSession } from './lib/api/serverApi';
 const privateRoutes = ['/profile', '/notes'];
 const publicRoutes = ['/sign-in', '/sign-up'];
 
-export async function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
   const cookieStore = await cookies();
   const accessToken = cookieStore.get('accessToken')?.value;
